@@ -42,6 +42,11 @@ The following command/mappings availalbe when editing wenyan file.
 | `<F6>` | :Render | render title | outpu to .svg file |
 | `<S-F9>` | :Clean | js/py/rb/svg | clean some files |
 
+- Wson Support
+
+* `:WsonEncode` convert json string or current json buffer to wson
+* `:WsonDecode` convert wson string or current wson buffer to json
+
 ### References
 
 - [wenyan-lang](https://github.com/LingDong-/wenyan-lang)

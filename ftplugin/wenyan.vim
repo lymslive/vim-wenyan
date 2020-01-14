@@ -17,9 +17,9 @@ setlocal shiftwidth=4
 inoremap <buffer> ' 「」<Left>
 " inoremap <buffer> " 「「」」<Left><Left>
 inoremap <buffer> " 『』<Left>
-inoremap <buffer> // 批曰『』<Left>
-inoremap <buffer> /, 疏曰『』<Left>
-inoremap <buffer> /. 注曰『』<Left>
+inoremap <buffer> // 注曰『』<Left>
+inoremap <buffer> /. 疏曰『』<Left>
+inoremap <buffer> /, 批曰『』<Left>
 
 command! -buffer -nargs=? -complete=custom,wenyan#complete#target
             \ Compile call wenyan#buffer#compile(<f-args>)
@@ -42,6 +42,7 @@ nnoremap <buffer> <S-F9> <Esc>:Clean
 nnoremap <buffer> <F3> <Esc>:Example<CR>
 nnoremap <buffer> <S-F3> <Esc>:Snippet<CR>
 
+call wenyan#plugin#load()
 " --------------------------------------------------------------------------------
 let &cpo = s:cpo_save
 unlet s:cpo_save
