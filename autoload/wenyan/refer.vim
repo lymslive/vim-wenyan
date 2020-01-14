@@ -57,12 +57,16 @@ function! s:example_list() abort
     endif
 
     call s:read_example_info()
-    return s:example_list_menu()
+    if !empty(s:dExample)
+        return s:example_list_menu()
+    else
+        echo 'fail to read example info'
+    endif
 endfunction
 
 " Func: s:read_example_info 
 function! s:read_example_info() abort
-    let l:info_js = g:wenyan#config#local_repos . '/tools/examples_info.js'
+    let l:info_js = g:wenyan#config#local_repos . '/tools/examples.js'
     if !filereadable(l:info_js)
         return
     endif
@@ -71,12 +75,13 @@ function! s:read_example_info() abort
         return
     endif
     let l:linestr = join(l:lines, '')
-    let l:jsstr = matchstr(l:linestr, '{.*}')
+    let l:jsstr = matchstr(l:linestr, 'examplesAlias\s*:\s*\zs{.\{-\}}\ze')
     if empty(l:jsstr)
         return
     endif
     let l:obj = js_decode(l:jsstr)
-    let l:examplesAlias = get(l:obj, 'examplesAlias', {})
+    " let l:examplesAlias = get(l:obj, 'examplesAlias', {})
+    let l:examplesAlias = l:obj
     if empty(l:examplesAlias)
         return
     endif
